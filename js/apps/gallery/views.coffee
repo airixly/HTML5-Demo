@@ -43,7 +43,7 @@ define ["underscore", "marionette", "text!./tpl/gallery-item-tpl.html"], (_, Mar
       photoArray = @resetPhotoWidth()
       arrayLen = photoArray.length
       while start < arrayLen
-        #Total width of photos in current row
+        #Calculate total width of the photos in current row
         while totalWidth * 1.1 < containerWidth
           totalWidth += photoArray[start++] + border
           break if start is arrayLen
@@ -52,27 +52,29 @@ define ["underscore", "marionette", "text!./tpl/gallery-item-tpl.html"], (_, Mar
         totalWidth = 0
         i = row
         photos = []
-        while i < start
-          #Calculate new width
-          photoWidth = Math.floor photoArray[i] * r
-          totalWidth += photoWidth + border
-          photos.push photoWidth
-          i++
+        #Don't resize last row if total width is much less than container's width
+        if r < 2
+          while i < start
+            #Calculate new width
+            photoWidth = Math.floor photoArray[i] * r
+            totalWidth += photoWidth + border
+            photos.push photoWidth
+            i++
 
-        #Number of photos in current row
-        i = i - row
+          #Number of photos in current row
+          i = i - row
 
-        #Adjust width to fill container
-        j = 0
-        while totalWidth < containerWidth
-          j = (j + 1) % i
-          photos[j]++
-          totalWidth++
+          #Adjust width to fill container
+          j = 0
+          while totalWidth < containerWidth
+            j = (j + 1) % i
+            photos[j]++
+            totalWidth++
 
-        while totalWidth > containerWidth
-          j = (j + 1) % i
-          photos[j]--
-          totalWidth--
+          while totalWidth > containerWidth
+            j = (j + 1) % i
+            photos[j]--
+            totalWidth--
 
         @changPhotoSize row + k, photo for photo,k in photos
         #Reset total width for next row

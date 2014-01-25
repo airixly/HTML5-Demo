@@ -88,23 +88,25 @@
             totalWidth = 0;
             i = row;
             photos = [];
-            while (i < start) {
-              photoWidth = Math.floor(photoArray[i] * r);
-              totalWidth += photoWidth + border;
-              photos.push(photoWidth);
-              i++;
-            }
-            i = i - row;
-            j = 0;
-            while (totalWidth < containerWidth) {
-              j = (j + 1) % i;
-              photos[j]++;
-              totalWidth++;
-            }
-            while (totalWidth > containerWidth) {
-              j = (j + 1) % i;
-              photos[j]--;
-              totalWidth--;
+            if (r < 2) {
+              while (i < start) {
+                photoWidth = Math.floor(photoArray[i] * r);
+                totalWidth += photoWidth + border;
+                photos.push(photoWidth);
+                i++;
+              }
+              i = i - row;
+              j = 0;
+              while (totalWidth < containerWidth) {
+                j = (j + 1) % i;
+                photos[j]++;
+                totalWidth++;
+              }
+              while (totalWidth > containerWidth) {
+                j = (j + 1) % i;
+                photos[j]--;
+                totalWidth--;
+              }
             }
             for (k = _i = 0, _len = photos.length; _i < _len; k = ++_i) {
               photo = photos[k];

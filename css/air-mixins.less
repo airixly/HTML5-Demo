@@ -1,0 +1,24 @@
+.scale(@sx) {
+  -webkit-transform: scale(@sx);
+  -moz-transform: scale(@sx);
+  -ms-transform: scale(@sx);
+  transform: scale(@sx);
+}
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  transition: @transition;
+}
+
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+  -moz-transition: -moz-transform @transition;
+  transition: transform @transition;
+}
+
+.animation(@animation) {
+  -webkit-animation: @animation;
+  -moz-animation: @animation;
+  animation: @animation;
+}

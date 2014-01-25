@@ -3,7 +3,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(["marionette", "text!./tpl/gallery-item-tpl.html"], function(Marionette, galleryItemTpl) {
+  define(["underscore", "marionette", "text!./tpl/gallery-item-tpl.html"], function(_, Marionette, galleryItemTpl) {
     var GalleryItemView, GalleryView, IMG_HEIGHT, _ref, _ref1;
     IMG_HEIGHT = 200;
     return {
@@ -124,19 +124,21 @@
         };
 
         GalleryView.prototype.resetPhotoWidth = function() {
-          var photoArray;
-          photoArray = [];
-          this.collection.each(function(model) {
-            var height, width;
-            width = model.get("width");
-            height = model.get("height");
-            if (width && height) {
-              height = parseInt(height, 10);
-              width = Math.floor((parseInt(width, 10)) * IMG_HEIGHT / height);
-              return photoArray.push(width);
-            }
-          });
-          return photoArray;
+          var _this = this;
+          if (!_.isArray(this.photoArray)) {
+            this.photoArray = [];
+            this.collection.each(function(model) {
+              var height, width;
+              width = model.get("width");
+              height = model.get("height");
+              if (width && height) {
+                height = parseInt(height, 10);
+                width = Math.floor((parseInt(width, 10)) * IMG_HEIGHT / height);
+                return _this.photoArray.push(width);
+              }
+            });
+          }
+          return this.photoArray;
         };
 
         return GalleryView;

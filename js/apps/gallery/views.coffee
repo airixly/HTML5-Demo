@@ -1,4 +1,4 @@
-define ["marionette", "text!./tpl/gallery-item-tpl.html"], (Marionette, galleryItemTpl) ->
+define ["underscore", "marionette", "text!./tpl/gallery-item-tpl.html"], (_, Marionette, galleryItemTpl) ->
   IMG_HEIGHT = 200
 
   GalleryItemView: class GalleryItemView extends Marionette.ItemView
@@ -86,12 +86,13 @@ define ["marionette", "text!./tpl/gallery-item-tpl.html"], (Marionette, galleryI
         height: IMG_HEIGHT
 
     resetPhotoWidth: ->
-      photoArray = [];
-      @collection.each (model)->
-        width = model.get "width"
-        height = model.get "height"
-        if width and height
-          height = parseInt height, 10
-          width = Math.floor (parseInt width, 10) * IMG_HEIGHT / height
-          photoArray.push width
-      photoArray
+      if not _.isArray @photoArray
+        @photoArray = []
+        @collection.each (model) =>
+          width = model.get "width"
+          height = model.get "height"
+          if width and height
+            height = parseInt height, 10
+            width = Math.floor (parseInt width, 10) * IMG_HEIGHT / height
+            @photoArray.push width
+      @photoArray

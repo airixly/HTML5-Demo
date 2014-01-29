@@ -31,7 +31,7 @@
             url: "#home"
           }, {
             name: "Blog",
-            url: "#blog"
+            url: "http://airixly.github.io/"
           }
         ]);
       },

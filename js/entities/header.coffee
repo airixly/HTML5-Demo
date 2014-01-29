@@ -14,7 +14,7 @@ define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
         url: "#home"
       ,
         name: "Blog"
-        url: "#blog"
+        url: "http://airixly.github.io/"
       ]
 
     getAboutEntities: ->

@@ -80,6 +80,9 @@ body {
   #main .icon-circle-wrapper {
     margin: 15px 32px;
   }
+  #main .icon-container {
+    display: inline-block;
+  }
 }
 @media screen and (max-width: 767px) {
   #main .icon-circle-wrapper {
@@ -95,9 +98,6 @@ body {
   margin: 0 auto;
   padding: 3em 0;
   text-align: center;
-}
-#main .air-icons .icon-container {
-  display: inline-block;
 }
 #main .air-icons .icon-circle-wrapper {
   color: #fff;

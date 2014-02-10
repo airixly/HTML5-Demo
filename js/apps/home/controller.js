@@ -4,7 +4,7 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define(["app", "marionette", "./views", "ctrlVent", "../gallery/index", "entities/icon"], function(App, Marionette, Views, ctrlVent, Gallery) {
-    var Router, controller, icons, router, _ref;
+    var Router, controller, icons, _ref;
     icons = ctrlVent.reqres.request("icon:entities");
     Router = (function(_super) {
       __extends(Router, _super);
@@ -34,13 +34,8 @@
         return App.main.show(contentView);
       }
     };
-    router = new Router({
+    new Router({
       controller: controller
-    });
-    ctrlVent.events.on("icon:clicked", function(fragment) {
-      return router.navigate(fragment, {
-        trigger: true
-      });
     });
     return controller;
   });

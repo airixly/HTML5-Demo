@@ -7,19 +7,19 @@ define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
   API =
     getIconEntities: ->
       icons = new IconCollection [
-        name:""
+        name: ""
         iconName: "fa-envelope"
-        url:"#gallery"
+        url: "mailto:airixly@gmail.com?subject=Github-Airixly"
       ,
-        name:""
+        name: ""
         iconName: "fa-cloud-upload"
-        url:"#gallery"
+        url: "#"
       ,
-        name:""
+        name: ""
         iconName: "fa-comments"
-        url:"#gallery"
+        url: "#"
       ,
-        name:"gallery"
+        name: "gallery"
         iconName: "fa-camera-retro"
-        url:"#gallery"
+        url: "#gallery"
       ]

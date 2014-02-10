@@ -16,10 +16,7 @@ define ["app", "marionette", "./views", "ctrlVent", "../gallery/index",
         collection: icons
       App.main.show contentView
 
-  router = new Router
+  new Router
     controller: controller
-
-  ctrlVent.events.on "icon:clicked", (fragment)->
-    router.navigate fragment, trigger: true
 
   controller

@@ -14,19 +14,11 @@
           return _ref;
         }
 
-        IconItemView.prototype.className = "icon-circle-wrapper";
+        IconItemView.prototype.className = "icon-container";
 
         IconItemView.prototype.template = _.template(iconWrapperTpl, null, {
           variable: "data"
         });
-
-        IconItemView.prototype.events = {
-          "click": "select"
-        };
-
-        IconItemView.prototype.select = function() {
-          return ctrlVent.events.trigger("icon:clicked", this.model.get("name"));
-        };
 
         return IconItemView;
 

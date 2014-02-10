@@ -26,15 +26,15 @@
           {
             name: "",
             iconName: "fa-envelope",
-            url: "#gallery"
+            url: "mailto:airixly@gmail.com?subject=Github-Airixly"
           }, {
             name: "",
             iconName: "fa-cloud-upload",
-            url: "#gallery"
+            url: "#"
           }, {
             name: "",
             iconName: "fa-comments",
-            url: "#gallery"
+            url: "#"
           }, {
             name: "gallery",
             iconName: "fa-camera-retro",

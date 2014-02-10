@@ -96,7 +96,11 @@ body {
   padding: 3em 0;
   text-align: center;
 }
+#main .air-icons .icon-container {
+  display: inline-block;
+}
 #main .air-icons .icon-circle-wrapper {
+  color: #fff;
   width: 90px;
   height: 90px;
   font-size: 50px;

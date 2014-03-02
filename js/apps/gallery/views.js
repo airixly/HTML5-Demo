@@ -61,10 +61,10 @@
           if (this.collection.length !== 0 && len !== 0) {
             $wrapper = $gallery.find(".gallery-wrapper");
             border = (parseInt($wrapper.css("border-left-width"), 10)) + parseInt($wrapper.css("border-right-width"), 10);
-            this.resize($gallery.width(), border);
+            this.resize($gallery.width() - 10, border);
             return $(window).off("resize").on("resize", function() {
               $gallery = $(".gallery");
-              return _this.resize($gallery.width(), border);
+              return _this.resize($gallery.width() - 10, border);
             });
           }
         };

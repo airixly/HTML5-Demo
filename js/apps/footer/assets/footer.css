@@ -5,6 +5,7 @@
   height: 50px;
   text-align: right;
   color: #fff;
+  padding-top: 20px;
 }
 #footer .footer-list {
   display: inline-block;
@@ -25,10 +26,15 @@
   position: relative;
   top: 2px;
 }
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 768px) {
+  #footer {
+    height: 70px;
+  }
+}
+@media screen and (max-width: 767px) {
   #footer {
     text-align: center;
-    height: 70px;
+    height: 90px;
   }
   #footer .footer-list {
     padding: 0;

@@ -29,12 +29,13 @@ define ["underscore", "marionette", "text!./tpl/gallery-item-tpl.html"], (_, Mar
       if @collection.length isnt 0 and len isnt 0
         $wrapper = $gallery.find ".gallery-wrapper"
         border = (parseInt $wrapper.css("border-left-width"), 10) + parseInt $wrapper.css("border-right-width"), 10
-        @resize $gallery.width(), border
+        #-webkit-scrollbar width:10px
+        @resize $gallery.width() - 10, border
         $(window)
         .off("resize")
         .on "resize", =>
             $gallery = $ ".gallery"
-            @resize $gallery.width(), border
+            @resize $gallery.width() - 10, border
 
     resize: (containerWidth, border)->
       row = 0

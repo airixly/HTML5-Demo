@@ -6,12 +6,14 @@
     app.addRegions({
       header: "#header",
       main: "#main",
+      slider: "#slider",
       footer: "#footer"
     });
     app.on("initialize:after", function() {
       if (Backbone.history) {
-        return Backbone.history.start();
+        Backbone.history.start();
       }
+      return console.log("%c Airixly@gmail.com", "color:#222;text-shadow: 0px 1px 0px #999,0px 2px 0px #888,0px 3px 2px #001135;      font:50px 'Helvetica Neue',sans-serif");
     });
     return app;
   });

@@ -36,6 +36,10 @@
             iconName: "fa-comments",
             url: "#"
           }, {
+            name: "slider",
+            iconName: "fa-picture-o",
+            url: "#slider"
+          }, {
             name: "gallery",
             iconName: "fa-camera-retro",
             url: "#gallery"

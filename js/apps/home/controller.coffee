@@ -6,6 +6,7 @@ define ["app", "marionette", "./views", "ctrlVent", "../gallery/index",
     appRoutes:
       "home": "showHome"
       "gallery": "showGallery"
+      "slider": "showSlider"
 
   controller =
     showGallery: ->
@@ -16,7 +17,10 @@ define ["app", "marionette", "./views", "ctrlVent", "../gallery/index",
         collection: icons
       App.main.show contentView
 
-  new Router
+    showSlider: ->
+      App.Slider.showSlider()
+
+  App.Router = new Router
     controller: controller
 
   controller

@@ -16,7 +16,8 @@
 
       Router.prototype.appRoutes = {
         "home": "showHome",
-        "gallery": "showGallery"
+        "gallery": "showGallery",
+        "slider": "showSlider"
       };
 
       return Router;
@@ -32,9 +33,12 @@
           collection: icons
         });
         return App.main.show(contentView);
+      },
+      showSlider: function() {
+        return App.Slider.showSlider();
       }
     };
-    new Router({
+    App.Router = new Router({
       controller: controller
     });
     return controller;

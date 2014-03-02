@@ -20,5 +20,7 @@ require [
   "apps/home/index"
 ,
   "apps/footer/index"
+,
+  "apps/slider/index"
 ], (App) ->
   App.start()

@@ -18,7 +18,7 @@
     }
   });
 
-  require(["app", "apps/header/index", "apps/home/index", "apps/footer/index"], function(App) {
+  require(["app", "apps/header/index", "apps/home/index", "apps/footer/index", "apps/slider/index"], function(App) {
     return App.start();
   });
 

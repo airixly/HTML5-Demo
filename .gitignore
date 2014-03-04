@@ -20,5 +20,8 @@
 MANIFEST.MF
 
 #dependencies#
-/bower_components
+/vendor
 /node_modules
+
+#Coffee#
+/js/**.js

@@ -1,13 +1,13 @@
 require.config
   paths:
-    jquery: "../bower_components/jquery/jquery"
-    underscore: "../bower_components/underscore-amd/underscore"
-    backbone: "../bower_components/backbone-amd/backbone"
-    "backbone.wreqr": "../bower_components/backbone.wreqr/lib/amd/backbone.wreqr"
-    "backbone.babysitter": "../bower_components/backbone.babysitter/lib/amd/backbone.babysitter"
-    marionette: "../bower_components/marionette/lib/core/amd/backbone.marionette"
-    text: "../bower_components/requirejs-text/text"
-    bootstrap: "../bower_components/bootstrap/dist/js/bootstrap"
+    jquery: "../vendor/jquery/jquery"
+    underscore: "../vendor/underscore-amd/underscore"
+    backbone: "../vendor/backbone-amd/backbone"
+    "backbone.wreqr": "../vendor/backbone.wreqr/lib/amd/backbone.wreqr"
+    "backbone.babysitter": "../vendor/backbone.babysitter/lib/amd/backbone.babysitter"
+    marionette: "../vendor/marionette/lib/core/amd/backbone.marionette"
+    text: "../vendor/requirejs-text/text"
+    bootstrap: "../vendor/bootstrap/dist/js/bootstrap"
   shim:
     bootstrap:
       deps: ["jquery"]

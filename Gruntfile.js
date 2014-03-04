@@ -30,7 +30,7 @@ module.exports = function (grunt) {
                         dest: 'dist/'
                     },
                     {
-                        src: 'bower_components/requirejs/require.js',
+                        src: 'vendor/requirejs/require.js',
                         dest: 'dist/require.js'
                     },
                     {
@@ -44,7 +44,7 @@ module.exports = function (grunt) {
             dev: {
                 expand: true,
                 cwd: "./",
-                src: ['index.DEV.html', 'css/**', 'js/**', 'bower_components/**'],
+                src: ['index.DEV.html', 'css/**', 'js/**', 'vendor/**'],
                 dest: process.env.HOME + "/Software/tomcat/webapps/air/"
             }
 

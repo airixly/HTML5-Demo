@@ -3,15 +3,32 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define(["app", "marionette", "text!./tpl/slider-tpl.html"], function(App, Marionette, sliderTpl) {
-    var SliderView, _ref;
+  define(["app", "marionette", "text!./tpl/slider-tpl.html", "text!./tpl/img-tpl.html", "text!./tpl/dot-cmd-tpl.html"], function(App, Marionette, sliderTpl, imgTpl, dotCmdTpl) {
+    var ImageView, SliderView, _ref, _ref1;
     return {
+      ImageView: ImageView = (function(_super) {
+        __extends(ImageView, _super);
+
+        function ImageView() {
+          _ref = ImageView.__super__.constructor.apply(this, arguments);
+          return _ref;
+        }
+
+        ImageView.prototype.tagName = "li";
+
+        ImageView.prototype.template = _.template(imgTpl, null, {
+          variable: "data"
+        });
+
+        return ImageView;
+
+      })(Marionette.ItemView),
       SliderView: SliderView = (function(_super) {
         __extends(SliderView, _super);
 
         function SliderView() {
-          _ref = SliderView.__super__.constructor.apply(this, arguments);
-          return _ref;
+          _ref1 = SliderView.__super__.constructor.apply(this, arguments);
+          return _ref1;
         }
 
         SliderView.prototype.template = _.template(sliderTpl);
@@ -19,6 +36,10 @@
         SliderView.prototype.id = "slider-modal";
 
         SliderView.prototype.className = "modal fade";
+
+        SliderView.prototype.itemView = ImageView;
+
+        SliderView.prototype.itemViewContainer = ".slider-list";
 
         SliderView.prototype.attributes = {
           tabindex: "-1",
@@ -38,25 +59,35 @@
 
         SliderView.prototype.timeout = 0;
 
+        SliderView.prototype.dotCmdTpl = _.template(dotCmdTpl, null, {
+          variable: "data"
+        });
+
+        SliderView.prototype.isItemAdded = false;
+
+        SliderView.prototype.onAfterItemAdded = function() {
+          var className;
+          className = "";
+          if (!this.isItemAdded) {
+            this.isItemAdded = true;
+            className = "dot-animation";
+          }
+          return this.$(".dot-commands").append(this.dotCmdTpl({
+            className: className
+          }));
+        };
+
         SliderView.prototype.hidden = function() {
           return App.Router.navigate("home");
         };
 
         SliderView.prototype.select = function(e) {
-          var $dot, $dotCmd, $dots, $progress, $slider, $target, order, sliderX;
+          var $slider, $target, order,
+            _this = this;
           $target = $(e.currentTarget);
           order = $target.index();
-          $progress = $(".slider-progress");
-          $dots = $(".dot-commands").find(".dot-cmd");
-          $dotCmd = $dots.eq(0);
-          $dot = $dots.eq(order);
           $slider = $("#slider .slider-list");
-          sliderX = "" + (-order * 100) + "%";
-          $dotCmd.removeClass("dot-animation");
-          $slider.removeClass("slider-animation").css("left", sliderX);
-          $progress.removeClass("progress-animation");
-          $dots.removeAttr("style");
-          $dot.css("background-color", "#bd9b83");
+          this.controlAnimation($slider, order, false);
           if (this.timeout) {
             clearTimeout(this.timeout);
           }
@@ -64,17 +95,34 @@
             return $slider.animate({
               left: 0
             }, 1000, function() {
-              $slider.add($dots).removeAttr("style");
-              $dotCmd.addClass("dot-animation");
-              $slider.addClass("slider-animation");
-              return $progress.addClass("progress-animation");
+              return _this.controlAnimation($slider, order, true);
             });
           }, 3000);
         };
 
+        SliderView.prototype.controlAnimation = function($slider, order, start) {
+          var $dot, $dotCmd, $dots, $progress, dotColor, op;
+          $progress = $(".slider-progress");
+          $dots = $(".dot-commands").find(".dot-cmd");
+          $dotCmd = $dots.eq(0);
+          $dot = $dots.eq(order);
+          dotColor = "#bd9b83";
+          $dots.removeAttr("style");
+          if (start) {
+            op = "addClass";
+          } else {
+            op = "removeClass";
+            $slider.css("left", "" + (-order * 100) + "%");
+            $dot.css("background-color", dotColor);
+          }
+          $slider[op]("slider-animation");
+          $progress[op]("progress-animation");
+          return $dotCmd[op]("dot-animation");
+        };
+
         return SliderView;
 
-      })(Marionette.ItemView)
+      })(Marionette.CompositeView)
     };
   });
 

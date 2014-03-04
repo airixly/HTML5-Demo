@@ -1,8 +1,15 @@
-define ["app", "marionette", "text!./tpl/slider-tpl.html"], (App, Marionette, sliderTpl) ->
-  SliderView: class SliderView extends Marionette.ItemView
+define ["app", "marionette", "text!./tpl/slider-tpl.html",
+        "text!./tpl/img-tpl.html", "text!./tpl/dot-cmd-tpl.html"], (App, Marionette, sliderTpl, imgTpl, dotCmdTpl) ->
+  ImageView: class ImageView extends Marionette.ItemView
+    tagName: "li"
+    template: _.template imgTpl, null, variable: "data"
+
+  SliderView: class SliderView extends Marionette.CompositeView
     template: _.template sliderTpl
     id: "slider-modal"
     className: "modal fade"
+    itemView: ImageView
+    itemViewContainer: ".slider-list"
     attributes:
       tabindex: "-1"
       role: "dialog"
@@ -14,6 +21,16 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html"], (App, Marionette, sl
       "click @ui.dot": "select"
       "hidden.bs.modal": "hidden"
     timeout: 0
+    dotCmdTpl: _.template dotCmdTpl, null, variable: "data"
+    isItemAdded: false
+
+    onAfterItemAdded: ->
+      className = ""
+      unless @isItemAdded
+        @isItemAdded = true
+        className = "dot-animation"
+      @$(".dot-commands").append @dotCmdTpl
+        className: className
 
     hidden: ->
       App.Router.navigate "home"
@@ -21,26 +38,30 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html"], (App, Marionette, sl
     select: (e)->
       $target = $ e.currentTarget
       order = $target.index()
+      $slider = $ "#slider .slider-list"
+      @controlAnimation $slider, order, no
+
+      clearTimeout @timeout if @timeout
+      @timeout = setTimeout =>
+        $slider.animate
+          left: 0
+        , 1000, =>
+          @controlAnimation $slider, order, yes
+      , 3000
+
+    controlAnimation: ($slider, order, start)->
       $progress = $ ".slider-progress"
       $dots = $(".dot-commands").find ".dot-cmd"
       $dotCmd = $dots.eq 0
       $dot = $dots.eq order
-      $slider = $ "#slider .slider-list"
-      sliderX = "#{-order * 100}%"
-      $dotCmd.removeClass "dot-animation"
-      $slider.removeClass("slider-animation").css "left", sliderX
-      $progress.removeClass "progress-animation"
+      dotColor = "#bd9b83"
       $dots.removeAttr "style"
-      $dot.css "background-color", "#bd9b83"
-      clearTimeout @timeout if @timeout
-      @timeout = setTimeout ->
-        $slider.animate
-          left: 0
-        , 1000, ->
-          $slider.add($dots).removeAttr "style"
-          $dotCmd.addClass "dot-animation"
-          $slider.addClass "slider-animation"
-          $progress.addClass "progress-animation"
-      , 3000
-
-
+      if start
+        op = "addClass"
+      else
+        op = "removeClass"
+        $slider.css "left", "#{-order * 100}%"
+        $dot.css "background-color", dotColor
+      $slider[op] "slider-animation"
+      $progress[op] "progress-animation"
+      $dotCmd[op] "dot-animation"

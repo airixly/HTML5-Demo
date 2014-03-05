@@ -2,9 +2,15 @@
 @import "../../../../css/air-mixins";
 
 #slider-modal {
+  .modal-dialog {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0;
+    .transform(translate(-50%, -50%));
+  }
   .modal-content {
     background-color: @slider-content-bg;
-    min-width: 500px;
   }
   .modal-header {
     border-bottom: 1px solid darken(@slider-content-bg, 10%);
@@ -141,6 +147,28 @@
 
   .progress-animation {
     width: @slider-img-width-md;
+  }
+}
+
+@media (max-width: @screen-sm) {
+  #slider-show {
+    width: @slider-img-width-sm+10;
+    height: @slider-img-height-sm+10;
+    .slider-list {
+      height: @slider-img-height-sm;
+      img {
+        width: @slider-img-width-sm;
+        height: @slider-img-height-sm;
+      }
+    }
+  }
+
+  #slider-mask {
+    height: @slider-img-height-sm;
+  }
+
+  .progress-animation {
+    width: @slider-img-width-sm;
   }
 }
 

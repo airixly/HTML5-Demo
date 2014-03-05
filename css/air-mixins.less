@@ -5,6 +5,12 @@
   transform: scale(@sx);
 }
 
+.transform(@transform) {
+  -webkit-transform: @transform;
+  -moz-transform: @transform;
+  transform: @transform;
+}
+
 .transition(@transition) {
   -webkit-transition: @transition;
   -moz-transition: @transition;

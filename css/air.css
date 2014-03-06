@@ -8,7 +8,6 @@ body {
 }
 #page-wrapper {
   min-height: 100%;
-  min-width: 400px;
   position: relative;
   background-color: #218dd5;
 }
@@ -285,11 +284,12 @@ body {
   background-color: #e4dfd2;
 }
 #slider-modal .modal-header {
+  padding: 5px 15px;
   border-bottom: 1px solid #d1c8b2;
 }
 #content-slider {
   padding: 0;
-  margin: 10px auto 40px;
+  margin: 0 auto 30px;
   position: relative;
 }
 .dot-commands {
@@ -424,21 +424,21 @@ body {
 }
 @media (max-width: 640px) {
   #slider-show {
-    width: 310px;
-    height: 160px;
+    width: 260px;
+    height: 135px;
   }
   #slider-show .slider-list {
-    height: 150px;
+    height: 125px;
   }
   #slider-show .slider-list img {
-    width: 300px;
-    height: 150px;
+    width: 250px;
+    height: 125px;
   }
   #slider-mask {
-    height: 150px;
+    height: 125px;
   }
   .progress-animation {
-    width: 300px;
+    width: 250px;
   }
 }
 @keyframes expand {

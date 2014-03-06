@@ -23,3 +23,9 @@ MANIFEST.MF
 /bower_components
 /node_modules
 /vendor
+
+#custom#
+js/**/*.js
+js/**/*.css
+css/*.css
+!css/air.min.css

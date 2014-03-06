@@ -13,7 +13,6 @@
     background-color: @slider-content-bg;
   }
   .modal-header {
-    padding: 5px 15px;
     border-bottom: 1px solid darken(@slider-content-bg, 10%);
   }
 }
@@ -152,6 +151,10 @@
 }
 
 @media (max-width: @screen-sm) {
+  #slider-modal .modal-header {
+    padding: 5px 15px;
+  }
+
   #slider-show {
     width: @slider-img-width-sm+10;
     height: @slider-img-height-sm+10;

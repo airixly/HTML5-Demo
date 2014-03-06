@@ -284,7 +284,6 @@ body {
   background-color: #e4dfd2;
 }
 #slider-modal .modal-header {
-  padding: 5px 15px;
   border-bottom: 1px solid #d1c8b2;
 }
 #content-slider {
@@ -423,6 +422,9 @@ body {
   }
 }
 @media (max-width: 640px) {
+  #slider-modal .modal-header {
+    padding: 5px 15px;
+  }
   #slider-show {
     width: 260px;
     height: 135px;

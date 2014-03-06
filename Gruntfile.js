@@ -142,9 +142,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-preprocess');
 
     //Production
-    grunt.registerTask('default', ['clean', 'coffee:prod', 'less:prod', 'preprocess:prod', 'requirejs', 'copy:prod',
+    grunt.registerTask('pro', ['clean', 'coffee:prod', 'less:prod', 'preprocess:prod', 'requirejs', 'copy:prod',
         'copy:fonts', 'copy:build']);
 
     //Development
-    grunt.registerTask('dev', ['clean', 'coffee:dev', 'less:dev', 'preprocess:dev', 'copy:dev', 'copy:fonts', 'copy:build']);
+    grunt.registerTask('default', ['clean', 'coffee:dev', 'less:dev', 'preprocess:dev', 'copy:dev', 'copy:fonts', 'copy:build']);
 };

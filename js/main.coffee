@@ -7,10 +7,12 @@ require.config
     "backbone.babysitter": "../vendor/backbone.babysitter/lib/amd/backbone.babysitter"
     marionette: "../vendor/marionette/lib/core/amd/backbone.marionette"
     text: "../vendor/requirejs-text/text"
-    bootstrap: "../vendor/bootstrap/dist/js/bootstrap"
+    bootstrap: "../vendor/bootstrap/dist/js/bootstrap",
+    requireLib: "../vendor/requirejs/require"
   shim:
     bootstrap:
       deps: ["jquery"]
+  include: ["requireLib"]
 
 require [
   "app"

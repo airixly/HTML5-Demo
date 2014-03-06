@@ -1,6 +1,6 @@
 {
-  "name": "HTML5-Demo",
-  "version": "0.0.1",
+  "name": "air",
+  "version": "0.0.2",
   "homepage": "https://github.com/airixly/HTML5-Demo",
   "authors": [
     "airixly <airixly@gmail.com>"
@@ -16,5 +16,18 @@
     "requirejs": "~2.1.9",
     "requirejs-text": "~2.0.10",
     "underscore-amd": "~1.5.2"
-  }
+  },
+  "description": "HTML5",
+  "keywords": [
+    "HTML5",
+    "Demo"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ]
 }

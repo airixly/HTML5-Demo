@@ -1,12 +1,19 @@
 {
   "name": "air",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/airixly/HTML5-Demo.git"
+  },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.6.3",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-requirejs": "~0.4.1",
-    "grunt-contrib-cssmin": "~0.7.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-coffee": "~0.10.1",
+    "grunt-contrib-less": "~0.10.0",
+    "grunt-preprocess": "~4.0.0"
   }
 }

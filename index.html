@@ -2,11 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
     <title>Air</title>
 
-    <link rel="stylesheet" href="dist/font/css/font-awesome.min.css">
-    <link rel="stylesheet" href="dist/air.min.css">
+    <!--<link rel="stylesheet" href="css/font/css/font-awesome.min.css">-->
+    <!-- @if DEBUG=true -->
+    <link rel="stylesheet" href="css/air.css">
+    <!-- @endif -->
+    <!-- @if DEBUG=false -->
+    <link rel="stylesheet" href="css/air.min.css">
+    <!-- @endif -->
 
 </head>
 <body>
@@ -16,6 +22,11 @@
     <section id="slider"></section>
     <footer id="footer"></footer>
 </div>
-<script data-main="dist/air.min" src="dist/require.js"></script>
+<!-- @if DEBUG=true -->
+<script data-main="js/main" src="vendor/requirejs/require.js"></script>
+<!-- @endif -->
+<!-- @if DEBUG=false -->
+<script src="air.min.js"></script>
+<!-- @endif -->
 </body>
 </html>

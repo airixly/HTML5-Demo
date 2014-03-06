@@ -28,3 +28,7 @@ MANIFEST.MF
 
 #Less#
 /js/**/*.css
+/css/*.css
+
+#distribution#
+/dist

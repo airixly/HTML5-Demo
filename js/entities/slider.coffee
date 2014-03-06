@@ -8,14 +8,14 @@ define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
     getSliderEntities: ->
       images = new SliderCollection [
         name: "Cat"
-        url: "dist/img/img_1.jpg"
+        url: "css/img/img_1.jpg"
       ,
         name: "Sweet"
-        url: "dist/img/img_2.jpg"
+        url: "css/img/img_2.jpg"
       ,
         name: "Sakura"
-        url: "dist/img/img_3.jpg"
+        url: "css/img/img_3.jpg"
       ,
         name: "Strawberry Cake"
-        url: "dist/img/img_4.jpg"
+        url: "css/img/img_4.jpg"
       ]

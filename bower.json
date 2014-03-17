@@ -11,7 +11,7 @@
     "jquery": "~2.0.3",
     "backbone.babysitter": "~0.0.6",
     "backbone.wreqr": "~0.2.0",
-    "bootstrap": "~3.0.3",
+    "bootstrap": "~3.1.1",
     "marionette": "~1.4.1",
     "requirejs": "~2.1.9",
     "requirejs-text": "~2.0.10",

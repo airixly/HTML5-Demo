@@ -1,10 +1,4 @@
-define ["app", "./views", "ctrlVent", "entities/slider"], (App, Views, ctrlVent) ->
-  images = ctrlVent.reqres.request "slider:entities"
-
-  appendSlider: ->
-    sliderView = @getSliderView()
-    App.slider.show sliderView
-
-  getSliderView: ->
+define ["./views"], (Views) ->
+  getSliderView: (images) ->
     new Views.SliderView
       collection: images

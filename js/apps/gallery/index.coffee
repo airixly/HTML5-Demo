@@ -1,7 +1,5 @@
 define ["app", "marionette", "./controller", "ctrlVent", "entities/gallery"], (App, Marionette, Controller, ctrlVent) ->
-  gallery = ctrlVent.reqres.request "gallery:entities"
-
   API =
     showGallery: ->
+      gallery = ctrlVent.reqres.request "gallery:entities"
       Controller.showGallery gallery
-      ctrlVent.events.trigger "search:gallery"

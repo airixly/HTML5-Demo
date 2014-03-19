@@ -8,6 +8,3 @@ define ["app", "./controller"], (App, Controller) ->
       API.showHome()
 
   App.Home
-
-
-

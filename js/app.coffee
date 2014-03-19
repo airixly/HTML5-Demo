@@ -3,7 +3,6 @@ define ["backbone", "marionette"], (Backbone, Marionette) ->
   app.addRegions
     header: "#header"
     main: "#main"
-    slider:"#slider"
     footer: "#footer"
 
   app.on "initialize:after", ->

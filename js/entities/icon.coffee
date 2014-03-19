@@ -13,7 +13,7 @@ define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
       ,
         name: ""
         iconName: "fa-cloud-upload"
-        url: "#"
+        url: "#upload"
       ,
         name: ""
         iconName: "fa-comments"

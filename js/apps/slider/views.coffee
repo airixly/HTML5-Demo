@@ -18,6 +18,7 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
       "aria-hidden": "true"
     ui:
       "dot": ".dot-commands li"
+      "slider": ".slider-list"
     events:
       "click @ui.dot": "select"
       "hidden.bs.modal.slider": "hidden"
@@ -46,15 +47,14 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
     select: (e)->
       $target = $ e.currentTarget
       order = $target.index()
-      $slider = $ "#slider .slider-list"
-      @controlAnimation $slider, order, no
+      @controlAnimation @ui.slider, order, no
 
       clearTimeout @timeout if @timeout
       @timeout = setTimeout =>
-        $slider.animate
+        @ui.slider.animate
           left: 0
         , 1000, =>
-          @controlAnimation $slider, order, yes
+          @controlAnimation @ui.slider, order, yes
       , 3000
 
     controlAnimation: ($slider, order, start)->

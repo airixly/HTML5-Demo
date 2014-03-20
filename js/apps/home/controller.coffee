@@ -61,4 +61,7 @@ define ["app", "marionette", "./views", "../gallery/index", "../slider/index", "
   App.Router = new Router
     controller: controller
 
+  App.commands.setHandler "reset:home",->
+    App.Router.navigate "home"
+
   controller

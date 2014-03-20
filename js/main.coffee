@@ -1,8 +1,8 @@
 require.config
   paths:
-    jquery: "../vendor/jquery/jquery"
-    underscore: "../vendor/underscore-amd/underscore"
-    backbone: "../vendor/backbone-amd/backbone"
+    jquery: "../vendor/jquery/dist/jquery"
+    underscore: "../vendor/underscore/underscore"
+    backbone: "../vendor/backbone/backbone"
     "backbone.wreqr": "../vendor/backbone.wreqr/lib/amd/backbone.wreqr"
     "backbone.babysitter": "../vendor/backbone.babysitter/lib/amd/backbone.babysitter"
     marionette: "../vendor/marionette/lib/core/amd/backbone.marionette"

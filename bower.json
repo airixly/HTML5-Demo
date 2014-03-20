@@ -7,15 +7,15 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "backbone-amd": "~1.1.0",
-    "jquery": "~2.0.3",
-    "backbone.babysitter": "~0.0.6",
-    "backbone.wreqr": "~0.2.0",
+    "backbone": "~1.1.2",
+    "jquery": "~1.11.0",
+    "backbone.babysitter": "~0.1.1",
+    "backbone.wreqr": "~1.1.0",
     "bootstrap": "~3.1.1",
-    "marionette": "~1.4.1",
-    "requirejs": "~2.1.9",
+    "marionette": "~1.6.4",
+    "requirejs": "~2.1.11",
     "requirejs-text": "~2.0.10",
-    "underscore-amd": "~1.5.2"
+    "underscore": "~1.6.0"
   },
   "description": "HTML5",
   "keywords": [
@@ -29,5 +29,8 @@
     "vendor",
     "test",
     "tests"
-  ]
+  ],
+  "resolutions": {
+    "backbone.wreqr": "~1.1.0"
+  }
 }

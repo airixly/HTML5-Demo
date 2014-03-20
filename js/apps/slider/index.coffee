@@ -1,5 +1,5 @@
-define ["ctrlVent", "./controller", "entities/slider", "bootstrap"], (ctrlVent, Controller) ->
+define ["app", "./controller", "entities/slider", "bootstrap"], (App, Controller) ->
   API =
     getSliderView: ->
-      images = ctrlVent.reqres.request "slider:entities"
+      images = App.reqres.request "slider:entities"
       Controller.getSliderView images

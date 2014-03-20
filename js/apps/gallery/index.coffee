@@ -1,5 +1,5 @@
-define ["app", "marionette", "./controller", "ctrlVent", "entities/gallery"], (App, Marionette, Controller, ctrlVent) ->
+define ["app", "marionette", "./controller", "entities/gallery"], (App, Marionette, Controller) ->
   API =
-    showGallery: ->
-      gallery = ctrlVent.reqres.request "gallery:entities"
-      Controller.showGallery gallery
+    getGalleryView: (gallery)->
+      gallery = App.reqres.request "gallery:entities"
+      Controller.getGalleryView gallery

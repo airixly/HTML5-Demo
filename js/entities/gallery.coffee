@@ -1,7 +1,7 @@
-define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
+define ["backbone", "app"], (Backbone, App)->
   class GalleryCollection extends Backbone.Collection
     initialize: ->
-      ctrlVent.events.on "search:gallery", =>
+      App.vent.on "search:gallery", =>
         @fetchPhotos()
 
     fetchPhotos: ->
@@ -23,9 +23,9 @@ define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
       item.width = item.description.match(/width="(\d+)"/)?[1]
       item.height = item.description.match(/height="(\d+)"/)?[1]
 
-  ctrlVent.reqres.setHandler "gallery:entities", ->
+  App.reqres.setHandler "gallery:entities", ->
     API.getGalleryEntities()
 
   API =
     getGalleryEntities: ->
-      gallery = new GalleryCollection()
+      new GalleryCollection()

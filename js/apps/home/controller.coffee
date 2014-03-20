@@ -1,5 +1,5 @@
-define ["app", "marionette", "./views", "ctrlVent", "../gallery/index", "../slider/index", "../file-upload/index",
-        "entities/icon"], (App, Marionette, Views, ctrlVent, Gallery, Slider, FileUpload) ->
+define ["app", "marionette", "./views", "../gallery/index", "../slider/index", "../file-upload/index",
+        "entities/icon"], (App, Marionette, Views, Gallery, Slider, FileUpload) ->
   class Router extends Marionette.AppRouter
     appRoutes:
       "home": "showHome"
@@ -9,7 +9,7 @@ define ["app", "marionette", "./views", "ctrlVent", "../gallery/index", "../slid
 
   controller =
     showHome: ->
-      icons = ctrlVent.reqres.request "icon:entities"
+      icons = App.reqres.request "icon:entities"
 
       @layout = @getMainLayoutView()
 
@@ -20,18 +20,19 @@ define ["app", "marionette", "./views", "ctrlVent", "../gallery/index", "../slid
 
       App.main.show @layout
 
+    showGallery: ->
+      galleryView = @getGalleryView()
+      @layout.homeRegion.show galleryView
+
     showIconsView: (icons)->
       iconsView = @getIconsView icons
       @layout.homeRegion.show iconsView
 
-    showGallery: ->
-      Gallery.showGallery()
-
     showSlider: ->
-      ctrlVent.commands.execute "show:slider"
+      App.commands.execute "show:slider"
 
     showFileUpload: ->
-      ctrlVent.commands.execute "show:upload"
+      App.commands.execute "show:upload"
 
     renderSliderView: ->
       sliderView = @getSliderView()
@@ -43,6 +44,9 @@ define ["app", "marionette", "./views", "ctrlVent", "../gallery/index", "../slid
 
     getMainLayoutView: ->
       new Views.MainLayout
+
+    getGalleryView: ->
+      Gallery.getGalleryView()
 
     getIconsView: (icons)->
       new Views.IconsView

@@ -1,7 +1,7 @@
-define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
+define ["backbone", "app"], (Backbone, App)->
   class FooterCollection extends Backbone.Collection
 
-  ctrlVent.reqres.setHandler "footer:entities", ->
+  App.reqres.setHandler "footer:entities", ->
     API.getFooterEntities()
 
   API =

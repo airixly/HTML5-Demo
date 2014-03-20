@@ -1,12 +1,12 @@
-define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
+define ["backbone", "app"], (Backbone, App)->
   class SliderCollection extends Backbone.Collection
 
-  ctrlVent.reqres.setHandler "slider:entities", ->
+  App.reqres.setHandler "slider:entities", ->
     API.getSliderEntities()
 
   API =
     getSliderEntities: ->
-      images = new SliderCollection [
+      new SliderCollection [
         name: "Cat"
         url: "css/img/img_1.jpg"
       ,

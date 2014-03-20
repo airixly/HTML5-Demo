@@ -1,4 +1,4 @@
-define ["app", "marionette", "ctrlVent", "text!./tpl/upload-tpl.html"], (App, Marionette, ctrlVent, uploadTpl) ->
+define ["app", "marionette", "text!./tpl/upload-tpl.html"], (App, Marionette, uploadTpl) ->
   FileUploadView: class FileUploadView extends Marionette.CompositeView
     template: _.template uploadTpl
     id: "file-upload-modal"
@@ -15,8 +15,8 @@ define ["app", "marionette", "ctrlVent", "text!./tpl/upload-tpl.html"], (App, Ma
       App.Router.navigate "home"
 
     onShow: ->
-      ctrlVent.commands.setHandler "show:upload", =>
+      App.commands.setHandler "show:upload", =>
         @$el.modal "show"
 
     onClose: ->
-      ctrlVent.commands.removeHandler "show:upload"
+      App.commands.removeHandler "show:upload"

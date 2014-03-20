@@ -1,5 +1,5 @@
-define ["underscore", "marionette", "ctrlVent",
-        "text!./tpl/gallery-item-tpl.html"], (_, Marionette, ctrlVent, galleryItemTpl) ->
+define ["underscore", "marionette", "app",
+        "text!./tpl/gallery-item-tpl.html"], (_, Marionette, App, galleryItemTpl) ->
   IMG_HEIGHT = 200
 
   GalleryItemView: class GalleryItemView extends Marionette.ItemView
@@ -39,7 +39,7 @@ define ["underscore", "marionette", "ctrlVent",
             @resize $gallery.width() - 10, border
 
     onShow: ->
-      ctrlVent.events.trigger "search:gallery"
+      App.vent.trigger "search:gallery"
 
     resize: (containerWidth, border)->
       row = 0

@@ -1,6 +1,6 @@
-define ["app", "marionette", "ctrlVent", "text!./tpl/slider-tpl.html",
+define ["app", "marionette", "text!./tpl/slider-tpl.html",
         "text!./tpl/img-tpl.html",
-        "text!./tpl/dot-cmd-tpl.html"], (App, Marionette, ctrlVent, sliderTpl, imgTpl, dotCmdTpl) ->
+        "text!./tpl/dot-cmd-tpl.html"], (App, Marionette, sliderTpl, imgTpl, dotCmdTpl) ->
   ImageView: class ImageView extends Marionette.ItemView
     tagName: "li"
     template: _.template imgTpl, null, variable: "data"
@@ -26,11 +26,11 @@ define ["app", "marionette", "ctrlVent", "text!./tpl/slider-tpl.html",
     isItemAdded: false
 
     onShow: ->
-      ctrlVent.commands.setHandler "show:slider", =>
+      App.commands.setHandler "show:slider", =>
         @$el.modal "show"
 
     onClose: ->
-      ctrlVent.commands.removeHandler "show:slider"
+      App.commands.removeHandler "show:slider"
 
     onAfterItemAdded: ->
       className = ""

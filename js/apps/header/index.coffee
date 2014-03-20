@@ -1,7 +1,7 @@
-define ["app", "./controller", "ctrlVent", "entities/header", "../about/index"], (App, Controller, ctrlVent) ->
+define ["app", "./controller", "entities/header", "../about/index"], (App, Controller) ->
   App.module "Header", (Header, App, Backbone, Marionette, $, _) ->
-    headers = ctrlVent.reqres.request "header:entities"
-    abouts = ctrlVent.reqres.request "about:entities"
+    headers = App.reqres.request "header:entities"
+    abouts = App.reqres.request "about:entities"
 
     API =
       showNavbar: ->

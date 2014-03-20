@@ -1,12 +1,12 @@
-define ["backbone", "ctrlVent"], (Backbone, ctrlVent)->
+define ["backbone", "app"], (Backbone, App)->
   class IconCollection extends Backbone.Collection
 
-  ctrlVent.reqres.setHandler "icon:entities", ->
+  App.reqres.setHandler "icon:entities", ->
     API.getIconEntities()
 
   API =
     getIconEntities: ->
-      icons = new IconCollection [
+      new IconCollection [
         name: ""
         iconName: "fa-envelope"
         url: "mailto:airixly@gmail.com?subject=Github-Airixly"

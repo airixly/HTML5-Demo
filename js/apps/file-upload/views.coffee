@@ -26,19 +26,20 @@ define ["app", "marionette", "text!./tpl/upload-tpl.html",
       "aria-labeledby": "imageSlider"
       "aria-hidden": "true"
     ui:
-      selectBtn: ".file-upload"
+      selectBtn: "#file-upload"
       dropZone: ".file-drop-zone"
       uploadBtn: ".file-start"
     events:
       "hidden.bs.modal.upload": "hidden"
-      "change @ui.selectBtn": "chooseFiles"
+      "change @ui.selectBtn": "addFiles"
       "dragenter @ui.dropZone": "preventDefault"
       "dragover @ui.dropZone": "preventDefault"
-      "drop @ui.dropZone": "dropFiles"
+      "drop @ui.dropZone": "addFiles"
       "click @ui.uploadBtn": "upload"
     itemEvents:
       "remove:item": (view, args)->
         @collection.remove args.model
+        @resetFileInput()
 
     onBeforeItemAdded: (view) ->
       method = if @collection.indexOf(view.model) is -1 then "remove" else "add"
@@ -46,6 +47,9 @@ define ["app", "marionette", "text!./tpl/upload-tpl.html",
 
     onCompositeCollectionBeforeRender: ->
       @appendHtml @, @getUploadHeadView()
+
+    resetFileInput: ->
+      @ui.selectBtn.replaceWith @ui.selectBtn = @ui.selectBtn.clone true
 
     getUploadHeadView: ->
       @uploadHeadView = new UploadItemView
@@ -57,16 +61,15 @@ define ["app", "marionette", "text!./tpl/upload-tpl.html",
     onClose: ->
       @uploadHeadView.close()
 
-    dropFiles: (e)->
+    addFiles: (e)->
       @preventDefault e
-      @appendFiles e.originalEvent.dataTransfer.files
-
-    chooseFiles: (e)->
-      @appendFiles e.currentTarget.files
+      files = if e.type is "drop" then e.originalEvent.dataTransfer.files else e.currentTarget.files
+      @appendFiles files
+      @resetFileInput()
 
     appendFiles: (files)->
       App.vent.trigger "append:files", files
-      
+
     upload: ->
       App.commands.execute "start:upload"
 

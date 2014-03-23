@@ -9,9 +9,21 @@ define ["marionette", "app", "text!./tpl/header-bar.html",
     className: "nav navbar-nav"
     itemView: HeaderItemView
 
+    initialize: (options)->
+      @isRight = options.isRight
+
+    onRender: ->
+      @$el.addClass "navbar-right" if @isRight
+
   NavLayout: class NavLayout extends Marionette.Layout
     className: "navbar navbar-fixed-top"
     template: _.template headerBarTpl
     regions:
       main: "#main-nav"
       profile: "#profile-nav"
+
+    initialize: ->
+      @listenTo App.vent, "header:select", (isRight)->
+        @$("li.selected").removeClass "selected"
+        region = if isRight then @profile else @main
+        region.$el.find("li").eq(0).addClass "selected"

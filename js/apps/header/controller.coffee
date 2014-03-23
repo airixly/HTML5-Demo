@@ -15,14 +15,12 @@ define ["backbone", "marionette", "app", "./views"], (Backbone, Marionette, App,
       @layout.main.show headerView
 
     showAboutNav: (abouts) ->
-      aboutView = @getListView abouts
-      aboutView.on "render", ->
-        @$el.addClass "navbar-right"
+      aboutView = @getListView abouts, yes
       @layout.profile.show aboutView
 
-    getListView: (collection) ->
+    getListView: (collection, isRight) ->
       new Views.HeaderView
         collection: collection
-
+        isRight: isRight
 
   new HeaderController()

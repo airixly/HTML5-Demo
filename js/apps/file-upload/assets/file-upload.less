@@ -1,3 +1,5 @@
+@import "../../../../css/air-variables";
+
 #file-upload-modal {
   .file-op {
     .file-select-btn {
@@ -47,6 +49,14 @@
     }
     .drop-message {
       padding: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  #file-upload-modal {
+    .file-name, .file-size {
+      padding: 0 10px;
     }
   }
 }

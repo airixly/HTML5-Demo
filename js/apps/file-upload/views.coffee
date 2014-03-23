@@ -1,6 +1,6 @@
-define ["app", "marionette", "text!./tpl/upload-tpl.html",
+define ["app", "backbone", "marionette", "text!./tpl/upload-tpl.html",
         "text!./tpl/upload-item-tpl.html",
-        "text!./tpl/empty-item-tpl.html"], (App, Marionette, uploadTpl, uploadItemTpl, emptyItemTpl) ->
+        "text!./tpl/empty-item-tpl.html"], (App, Backbone, Marionette, uploadTpl, uploadItemTpl, emptyItemTpl) ->
   UploadItemView: class UploadItemView extends Marionette.ItemView
     className: "row upload-item"
     template: _.template uploadItemTpl, null, variable: "data"
@@ -41,6 +41,16 @@ define ["app", "marionette", "text!./tpl/upload-tpl.html",
         @collection.remove args.model
         @resetFileInput()
 
+    initialize: ->
+      @files = new FormData()
+      @bindUploadEvents()
+
+    bindUploadEvents: ->
+      @listenTo App.vent, "show:upload", @showModal
+
+    showModal: ->
+      @$el.modal "show"
+
     onBeforeItemAdded: (view) ->
       method = if @collection.indexOf(view.model) is -1 then "remove" else "add"
       @uploadHeadView.$el[method + "Class"] "active"
@@ -68,13 +78,57 @@ define ["app", "marionette", "text!./tpl/upload-tpl.html",
       @resetFileInput()
 
     appendFiles: (files)->
-      App.vent.trigger "append:files", files
+      @collection.add @createFileModel file for file in files
+
+    preprocessData: ->
+      @collection.each (model)=>
+        unless model.get "isUploaded" is yes
+          model.set "isUploaded", yes
+          @files.append @uid(), model.get "file"
 
     upload: ->
-      App.commands.execute "start:upload"
+      $.ajax
+        url: "/upload"
+        type: "post"
+        contentType: false
+        processData: false
+        data: @files
+        success: =>
+          @files = new FormData()
+          console.log "done"
+        error: =>
+          console.log "error"
 
     preventDefault: (e)->
       e.preventDefault()
 
     hidden: ->
       App.commands.execute "reset:home"
+
+    createFileModel: (file)->
+      new Backbone.Model
+        file: file
+        name: file.name
+        size: @convertFileSize file.size
+        isUploaded: no
+
+    convertFileSize: (size)->
+      base = 1024
+      u = -1
+      units = ["kB", "MB", "GB", "TB"]
+      if size < base
+        size + " B"
+      else
+        while size >= base
+          size /= base
+          ++u
+        size.toFixed(1) + " " + units[u]
+
+    s4: ->
+      ((1 + Math.random()) * 0x10000 | 0).toString().substring(1)
+
+    uid: ->
+      res = ""
+      len = 4
+      res += @s4() while len-- > 0
+      res

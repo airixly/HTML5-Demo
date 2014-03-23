@@ -27,11 +27,8 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
     isItemAdded: false
 
     onShow: ->
-      App.commands.setHandler "show:slider", =>
+      @listenTo App.vent, "show:slider", ->
         @$el.modal "show"
-
-    onClose: ->
-      App.commands.removeHandler "show:slider"
 
     onAfterItemAdded: ->
       className = ""
@@ -42,7 +39,7 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
         className: className
 
     hidden: ->
-      App.Router.navigate "home"
+      App.commands.execute "reset:home"
 
     select: (e)->
       $target = $ e.currentTarget

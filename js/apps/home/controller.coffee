@@ -1,5 +1,5 @@
-define ["app", "marionette", "./views", "../gallery/index", "../slider/index", "../file-upload/index",
-        "entities/icon"], (App, Marionette, Views, Gallery, Slider, FileUpload) ->
+define ["app", "underscore", "marionette", "./views", "../gallery/index", "../slider/index", "../file-upload/index",
+        "entities/icon"], (App, _, Marionette, Views, Gallery, Slider, FileUpload) ->
   class Router extends Marionette.AppRouter
     appRoutes:
       "home": "showHome"
@@ -13,7 +13,7 @@ define ["app", "marionette", "./views", "../gallery/index", "../slider/index", "
 
       @layout = @getMainLayoutView()
 
-      @layout.on "show", =>
+      @layout.listenTo App.vent, "show:home", =>
         @showIconsView icons
         @renderSliderView()
         @renderFileUploadView()
@@ -29,10 +29,10 @@ define ["app", "marionette", "./views", "../gallery/index", "../slider/index", "
       @layout.homeRegion.show iconsView
 
     showSlider: ->
-      App.commands.execute "show:slider"
+      App.vent.trigger "show:slider"
 
     showFileUpload: ->
-      App.commands.execute "show:upload"
+      App.vent.trigger "show:upload"
 
     renderSliderView: ->
       sliderView = @getSliderView()
@@ -61,7 +61,7 @@ define ["app", "marionette", "./views", "../gallery/index", "../slider/index", "
   App.Router = new Router
     controller: controller
 
-  App.commands.setHandler "reset:home",->
+  App.commands.setHandler "reset:home", ->
     App.Router.navigate "home"
 
   controller

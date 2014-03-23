@@ -1,6 +1,6 @@
-define ["marionette", "text!./tpl/icon-item.html",
+define ["app","marionette", "text!./tpl/icon-item.html",
         "text!./tpl/empty.html",
-        "text!./tpl/main-layout-tpl.html"], (Marionette, iconWrapperTpl, emptyTpl, mainLayoutTpl) ->
+        "text!./tpl/main-layout-tpl.html"], (App,Marionette, iconWrapperTpl, emptyTpl, mainLayoutTpl) ->
   IconItemView: class IconItemView extends Marionette.ItemView
     className: "icon-container"
     template: _.template iconWrapperTpl, null, variable: "data"
@@ -21,3 +21,6 @@ define ["marionette", "text!./tpl/icon-item.html",
       homeRegion: "#home-region"
       sliderRegion: "#slider-region"
       uploadRegion: "#upload-region"
+
+    onRender:->
+      App.vent.trigger "show:home"

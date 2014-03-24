@@ -1,5 +1,6 @@
 define ["app", "./views"], (App, Views) ->
-  showFooter: (footers)->
+  showFooter: ->
+    footers = App.reqres.request "footer:entities"
     footerView = @getFooter footers
     App.footer.show footerView
 

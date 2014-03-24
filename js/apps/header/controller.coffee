@@ -1,6 +1,8 @@
 define ["backbone", "marionette", "app", "./views"], (Backbone, Marionette, App, Views)->
   HeaderController: class HeaderController extends Marionette.Controller
-    showNavbar: (headers, abouts) ->
+    showNavbar: ->
+      headers = App.reqres.request "header:entities"
+      abouts = App.reqres.request "about:entities"
       @layout = @getNavLayout()
       @layout.on "show", =>
         @showHeader headers

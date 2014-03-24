@@ -1,5 +1,4 @@
-define ["app", "./controller", "entities/slider", "bootstrap"], (App, Controller) ->
+define ["./controller", "entities/slider", "bootstrap"], (Controller) ->
   API =
     getSliderView: ->
-      images = App.reqres.request "slider:entities"
-      Controller.getSliderView images
+      Controller.getSliderView()

@@ -30,6 +30,11 @@
       padding: 10px 0;
       margin: auto 0;
       line-height: 34px;
+      .file-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
       .file-del-btn {
         max-width: 70px;
         line-height: 20px;
@@ -49,6 +54,19 @@
     }
     .drop-message {
       padding: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  #file-upload-modal {
+    .file-drop-zone {
+      padding: 0 10px;
+      .upload-item {
+        .file-name, .file-size {
+          padding: 0 5px;
+        }
+      }
     }
   }
 }

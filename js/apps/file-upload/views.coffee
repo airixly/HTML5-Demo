@@ -115,7 +115,7 @@ define ["app", "backbone", "marionette", "text!./tpl/upload-tpl.html",
     convertFileSize: (size)->
       base = 1024
       u = -1
-      units = ["kB", "MB", "GB", "TB"]
+      units = ["KB", "MB", "GB", "TB"]
       if size < base
         size + " B"
       else

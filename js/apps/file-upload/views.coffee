@@ -125,7 +125,7 @@ define ["app", "backbone", "marionette", "text!./tpl/upload-tpl.html",
         size.toFixed(1) + " " + units[u]
 
     s4: ->
-      ((1 + Math.random()) * 0x10000 | 0).toString().substring(1)
+      ((1 + Math.random()) * 0x10000 | 0).toString(16).substring(1)
 
     uid: ->
       res = ""

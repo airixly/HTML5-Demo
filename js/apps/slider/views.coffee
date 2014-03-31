@@ -38,6 +38,7 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
       @controlAnimation @ui.slider, order, no
 
       clearTimeout @timeout if @timeout
+
       @timeout = setTimeout =>
         @ui.slider.animate
           left: 0
@@ -50,14 +51,13 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
       $dots = $(".dot-commands").find ".dot-cmd"
       $dotCmd = $dots.eq 0
       $dot = $dots.eq order
-      dotColor = $dotCmd.css "background-color"
-      $dots.removeAttr "style"
+      $dots.removeClass "active"
       if start
         op = "addClass"
       else
         op = "removeClass"
         $slider.css "left", "#{-order * 100}%"
-        $dot.css "background-color", dotColor
+        $dot.addClass "active"
       $slider[op] "slider-animation"
       $progress[op] "progress-animation"
       $dotCmd[op] "dot-animation"

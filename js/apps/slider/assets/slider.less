@@ -2,6 +2,7 @@
 @import "../../../../css/air-mixins";
 
 @dot-width: 12px;
+@dot-active-color: #ff8e09;
 
 #content-slider {
   padding: 0;
@@ -27,6 +28,9 @@
       background: #fff;
       display: inline-block;
       cursor: pointer;
+      &.active {
+        background: @dot-active-color;
+      }
     }
   }
   .dot-animation:after {
@@ -34,7 +38,7 @@
     top: 0;
     left: 0;
     content: "";
-    background-color: #ff8e09;
+    background-color: @dot-active-color;
     border-radius: 50%;
     width: @dot-width;
     height: @dot-width;

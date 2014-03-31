@@ -25,6 +25,7 @@ MANIFEST.MF
 
 #Coffee#
 /js/**/*.js
+/*.js
 
 #Less#
 /js/**/*.css

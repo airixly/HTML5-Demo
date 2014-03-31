@@ -8,27 +8,21 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
   SliderView: class SliderView extends Marionette.CompositeView
     template: _.template sliderTpl
     id: "slider-modal"
-    className: "modal fade"
+    className: "hidden"
     itemView: ImageView
     itemViewContainer: ".slider-list"
-    attributes:
-      tabindex: "-1"
-      role: "dialog"
-      "aria-labeledby": "imageSlider"
-      "aria-hidden": "true"
     ui:
       "dot": ".dot-commands li"
       "slider": ".slider-list"
     events:
       "click @ui.dot": "select"
-      "hidden.bs.modal.slider": "hidden"
     timeout: 0
     dotCmdTpl: _.template dotCmdTpl, null, variable: "data"
     isItemAdded: false
 
     onShow: ->
       @listenTo App.vent, "show:slider", ->
-        @$el.modal "show"
+        @$el.removeClass "hidden"
 
     onAfterItemAdded: ->
       className = ""
@@ -37,9 +31,6 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
         className = "dot-animation"
       @$(".dot-commands").append @dotCmdTpl
         className: className
-
-    hidden: ->
-      App.commands.execute "reset:home"
 
     select: (e)->
       $target = $ e.currentTarget
@@ -59,7 +50,7 @@ define ["app", "marionette", "text!./tpl/slider-tpl.html",
       $dots = $(".dot-commands").find ".dot-cmd"
       $dotCmd = $dots.eq 0
       $dot = $dots.eq order
-      dotColor = "#bd9b83"
+      dotColor = $dotCmd.css "background-color"
       $dots.removeAttr "style"
       if start
         op = "addClass"

@@ -1,42 +1,28 @@
 @import "../../../../css/air-variables";
 @import "../../../../css/air-mixins";
 
-#slider-modal {
-  .modal-dialog {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin: 0;
-    .transform(translate(-50%, -50%));
-  }
-  .modal-content {
-    background-color: @slider-content-bg;
-  }
-  .modal-header {
-    border-bottom: 1px solid darken(@slider-content-bg, 10%);
-  }
-}
+@dot-width: 12px;
 
 #content-slider {
   padding: 0;
-  margin: 0 auto 30px;
+  margin: 30px auto;
   position: relative;
 }
 
 .dot-commands {
   position: relative;
   padding: 0;
-  margin: 10px auto 0;
-  width: 64px;
+  margin: 12px auto 0;
+  width: 96px;
   li {
     list-style: none;
     padding: 0;
-    margin: 0 8px 0 0;
+    margin: 0 @dot-width 0 0;
     float: left;
     .dot-cmd {
       position: relative;
-      height: 8px;
-      width: 8px;
+      height: @dot-width;
+      width: @dot-width;
       border-radius: 50%;
       background: #fff;
       display: inline-block;
@@ -48,10 +34,10 @@
     top: 0;
     left: 0;
     content: "";
-    background-color: #bd9b83;
+    background-color: #ff8e09;
     border-radius: 50%;
-    width: 8px;
-    height: 8px;
+    width: @dot-width;
+    height: @dot-width;
     z-index: 20;
     .animation(doter 20s infinite);
   }
@@ -151,9 +137,6 @@
 }
 
 @media (max-width: @screen-sm) {
-  #slider-modal .modal-header {
-    padding: 5px 15px;
-  }
 
   #slider-show {
     width: @slider-img-width-sm+10;
@@ -301,39 +284,39 @@
   }
   23% {
     opacity: 0;
-    left: 16px;
+    left: 2*@dot-width;
   }
   25%, 45% {
     opacity: 1;
-    left: 16px;
+    left: 2*@dot-width;
   }
   47% {
     opacity: 0;
-    left: 16px;
+    left: 2*@dot-width;
   }
   48% {
     opacity: 0;
-    left: 32px;
+    left: 4*@dot-width;
   }
   50%, 70% {
     opacity: 1;
-    left: 32px;
+    left: 4*@dot-width;
   }
   72% {
     opacity: 0;
-    left: 32px;
+    left: 4*@dot-width;
   }
   73% {
     opacity: 0;
-    left: 48px;
+    left: 6*@dot-width;
   }
   75%, 95% {
     opacity: 1;
-    left: 48px;
+    left: 6*@dot-width;
   }
   97% {
     opacity: 0;
-    left: 48px;
+    left: 6*@dot-width;
   }
   98% {
     opacity: 0;
@@ -352,39 +335,39 @@
   }
   23% {
     opacity: 0;
-    left: 16px;
+    left: 2*@dot-width;
   }
   25%, 45% {
     opacity: 1;
-    left: 16px;
+    left: 2*@dot-width;
   }
   47% {
     opacity: 0;
-    left: 16px;
+    left: 2*@dot-width;
   }
   48% {
     opacity: 0;
-    left: 32px;
+    left: 4*@dot-width;
   }
   50%, 70% {
     opacity: 1;
-    left: 32px;
+    left: 4*@dot-width;
   }
   72% {
     opacity: 0;
-    left: 32px;
+    left: 4*@dot-width;
   }
   73% {
     opacity: 0;
-    left: 48px;
+    left: 6*@dot-width;
   }
   75%, 95% {
     opacity: 1;
-    left: 48px;
+    left: 6*@dot-width;
   }
   97% {
     opacity: 0;
-    left: 48px;
+    left: 6*@dot-width;
   }
   98% {
     opacity: 0;
@@ -403,39 +386,39 @@
   }
   23% {
     opacity: 0;
-    left: 16px;
+    left: 2*@dot-width;
   }
   25%, 45% {
     opacity: 1;
-    left: 16px;
+    left: 2*@dot-width;
   }
   47% {
     opacity: 0;
-    left: 16px;
+    left: 2*@dot-width;
   }
   48% {
     opacity: 0;
-    left: 32px;
+    left: 4*@dot-width;
   }
   50%, 70% {
     opacity: 1;
-    left: 32px;
+    left: 4*@dot-width;
   }
   72% {
     opacity: 0;
-    left: 32px;
+    left: 4*@dot-width;
   }
   73% {
     opacity: 0;
-    left: 48px;
+    left: 6*@dot-width;
   }
   75%, 95% {
     opacity: 1;
-    left: 48px;
+    left: 6*@dot-width;
   }
   97% {
     opacity: 0;
-    left: 48px;
+    left: 6*@dot-width;
   }
   98% {
     opacity: 0;

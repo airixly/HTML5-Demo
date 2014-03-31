@@ -20,6 +20,9 @@ define ["app", "underscore", "marionette", "./views", "../gallery/index", "../sl
 
       App.main.show @layout
 
+    hideHome: ->
+      @layout.homeRegion.$el.addClass "hidden"
+
     showGallery: ->
       galleryView = @getGalleryView()
       @layout.homeRegion.show galleryView
@@ -29,6 +32,7 @@ define ["app", "underscore", "marionette", "./views", "../gallery/index", "../sl
       @layout.homeRegion.show iconsView
 
     showSlider: ->
+      @hideHome()
       App.vent.trigger "show:slider"
 
     showFileUpload: ->

@@ -30,3 +30,4 @@ js/**/*.css
 css/*.css
 !css/air.min.css
 dist/
+Gruntfile.js

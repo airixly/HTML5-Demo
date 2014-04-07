@@ -25,9 +25,8 @@ MANIFEST.MF
 /vendor
 
 #custom#
-js/**/*.js
-js/**/*.css
-css/*.css
+*.js
+*.css
 !css/air.min.css
 dist/
-Gruntfile.js
+*.map

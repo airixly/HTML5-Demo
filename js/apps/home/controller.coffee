@@ -2,6 +2,7 @@ define ["app", "underscore", "marionette", "./views", "../gallery/index", "../sl
         "entities/icon"], (App, _, Marionette, Views, Gallery, Slider, FileUpload) ->
   class Router extends Marionette.AppRouter
     appRoutes:
+      "": "showHome"
       "home": "showHome"
       "gallery": "showGallery"
       "slider": "showSlider"

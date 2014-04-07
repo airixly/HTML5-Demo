@@ -7,7 +7,7 @@ module.exports = (grunt)->
       build:
         options:
           force: true
-        src: [process.env.HOME + '/Software/tomcat/webapps/air']
+        src: [process.env.HOME + '/Software/apache-tomcat/webapps/air']
 
     coffee:
       dev:
@@ -15,7 +15,7 @@ module.exports = (grunt)->
           expand: true
           cwd: './js'
           src: ['**/*.coffee']
-          dest: 'dist/js'
+          dest: 'dist/js/'
           ext: '.js'
         ]
       prod:
@@ -75,7 +75,7 @@ module.exports = (grunt)->
           expand: true
           cwd: 'dist/'
           src: '**'
-          dest: process.env.HOME + '/Software/tomcat/webapps/air/'
+          dest: process.env.HOME + '/Software/apache-tomcat/webapps/air/'
         ]
 
     requirejs:
@@ -91,8 +91,8 @@ module.exports = (grunt)->
         options:
           context:
             DEBUG: true
-          src: 'index.html'
-          dest: 'dist/index.html'
+        src: 'index.html'
+        dest: 'dist/index.html'
       prod:
         options:
           context:
@@ -143,4 +143,3 @@ module.exports = (grunt)->
   ,
     'copy:build'
   ]
-

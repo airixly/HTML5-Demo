@@ -24,8 +24,8 @@ MANIFEST.MF
 /node_modules
 
 #Coffee#
-/js/**/*.js
-/*.js
+*.js
+*.map
 
 #Less#
 /js/**/*.css

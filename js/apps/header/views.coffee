@@ -14,6 +14,10 @@ define ["marionette", "app", "text!./tpl/header-bar.html",
 
     onRender: ->
       @$el.addClass "navbar-right" if @isRight
+      @$el.addClass "touch" if @supportTouch()
+
+    supportTouch: ->
+      return 'ontouchstart' of document
 
   NavLayout: class NavLayout extends Marionette.Layout
     className: "navbar navbar-fixed-top"

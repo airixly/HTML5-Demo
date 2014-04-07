@@ -28,5 +28,6 @@ MANIFEST.MF
 *.js
 *.css
 !css/air.min.css
+!air.min.js
 dist/
 *.map
